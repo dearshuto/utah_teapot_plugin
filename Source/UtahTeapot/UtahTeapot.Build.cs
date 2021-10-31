@@ -23,8 +23,11 @@ public class UtahTeapot : ModuleRules
 			}
 			);
 
+		var configuration = Target.Configuration == UnrealTargetConfiguration.Debug && Target.bDebugBuildsActuallyUseDebugCRT
+		? "debug"
+		: "release";
 		PublicAdditionalLibraries.Add(
-			Path.Combine(ModuleDirectory, "..", "..", "ThirdParty", "UtahTeapot", "rust", "target", "debug", "libut.a")
+			Path.Combine(ModuleDirectory, "..", "..", "ThirdParty", "UtahTeapot", "rust", "target", configuration, "libut.a")
 			);
 
 
